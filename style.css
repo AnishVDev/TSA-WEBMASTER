@@ -1,6 +1,7 @@
 #CSS Styling File
 * {
   box-sizing: border-box;
+  font-family: "helvetica_neue";
   margin: 0;
   padding: 0;
 }
