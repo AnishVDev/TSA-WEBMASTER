@@ -52,21 +52,26 @@
   <header id="header">
     <!-- Primary Header (fixed) -->
     <nav id="primary-header" class="navbar navbar-expand-lg">
-      <div class="container d-flex align-items-center">
-        <a class="navbar-brand d-flex align-items-center me-3" href="index.html">
-          <img src="images/logo-transparentbg.png" class="logo img-fluid" alt="Community Resource Hub">
-          <span class="navbar-title ms-2">Community Resource Hub</span>
-        </a>
+      <div class="container d-flex align-items-center justify-content-between">
+        <!-- LEFT SIDE: Logo + Title -->
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="images/logo-transparentbg.png" class="logo img-fluid" alt="Community Resource Hub">
+            <span class="navbar-title ms-2">Community Resource Hub</span>
+          </a>
+        </div>
+      
+        <!-- RIGHT SIDE: Nav links -->
+        <div class="d-flex align-items-center">
+          <!-- Navbar toggler for small screens -->
+          <button class="navbar-toggler border-0 d-flex d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false">
+            <span class="navbar-toggler-icon visually-hidden">Menu</span>
+            <i class="fa-solid fa-bars"></i>
+          </button>
+      
+          <div class="header-bottom offcanvas offcanvas-end" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
 
-        <!-- Navbar toggler for small screens -->
-        <button class="navbar-toggler border-0 d-flex d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false">
-          <span class="navbar-toggler-icon visually-hidden">Menu</span>
-          <i class="fa-solid fa-bars"></i>
-        </button>
-
-        <!-- Desktop nav (kept on the right) -->
-        <div class="header-bottom offcanvas offcanvas-end" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
           <div class="offcanvas-header px-4 pb-0">
             <button type="button" class="btn-close btn-close-black mt-2" data-bs-dismiss="offcanvas"
               aria-label="Close"></button>
