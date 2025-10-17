@@ -113,7 +113,7 @@ a:hover { color: var(--accent-color); }
 }
 
 /* Logo on left */
-.navbar-brand { order: 1; display: flex; align-items: center; gap: 12px; }
+.navbar-brand { order: 1; display: flex; align-items: center; gap: 12px; justify-content: flex-start; }
 .logo { height: 56px; width: auto; display: block; transition: transform 0.18s ease; }
 .logo:hover { transform: scale(1.02); }
 
