@@ -129,6 +129,26 @@ a:hover { color: var(--accent-color); }
 /* navbar toggler visibility on small screens */
 .navbar-toggler { background: transparent; border: 0; font-size: 1.1rem; color: var(--dark-color); }
 
+.navbar-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #222;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+#primary-header .container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 45px;
+  width: auto;
+}
+
 /* ----------------------------------------
    5. Sub-header (placed below primary, NOT fixed)
    - darker, professional scheme
