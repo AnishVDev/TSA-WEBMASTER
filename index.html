@@ -118,6 +118,15 @@
   </footer>
 
   <script>
+    window.addEventListener("scroll", function() {
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+    
     const search = document.getElementById("search");
     const categoryFilter = document.getElementById("categoryFilter");
     const cards = document.querySelectorAll("#resourceList .card");
