@@ -10,6 +10,8 @@ body {
   background: #f8f9fb;
   color: #333;
   line-height: 1.6;
+  margin: 0;
+  padding-top: 80px;
 }
 
 header {
@@ -25,6 +27,7 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: background 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
+  border-bottom: 1px solid #ddd;
 }
 
 header.scrolled {
