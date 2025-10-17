@@ -1,20 +1,38 @@
+/* ========================================================
+   Community Resource Hub - style.css
+   Cleaned & organized by ChatGPT
+   Table of Contents:
+   1. Root variables
+   2. Global reset & base
+   3. Utility / containers / links / buttons
+   4. Primary header (fixed)
+   5. Sub-header (under primary, not fixed)
+   6. Hero
+   7. Sections & typography
+   8. Cards / grids
+   9. Forms / search / filters
+   10. Footer
+   11. Responsive
+   ======================================================== */
+
 /* ----------------------------------------
    1. Root Variables – Colors, Fonts
 ---------------------------------------- */
 :root {
-  --primary-color: #2a8ef7;
-  --secondary-color: #f1f8ff;
-  --dark-color: #1e293b;
-  --light-color: #ffffff;
-  --text-gray: #6b7280;
-  --accent-color: #82cfff;
+  --primary-color: #2a8ef7;     /* main bright blue */
+  --accent-color: #82cfff;      /* light blue for icons */
+  --subheader-blue: #0f5ea8;    /* darker but not navy; change if needed */
+  --dark-color: #0f1724;
+  --muted: #6b7280;
+  --bg: #f6fbff;
+  --white: #ffffff;
 
   --heading-font: "Poppins", sans-serif;
-  --body-font: "Inter", sans-serif;
+  --body-font: "Poppins", sans-serif;
 }
 
 /* ----------------------------------------
-   2. Global Reset
+   2. Global Reset & Base
 ---------------------------------------- */
 * {
   margin: 0;
@@ -22,16 +40,23 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: var(--body-font);
   color: var(--dark-color);
-  background-color: var(--secondary-color);
+  background-color: var(--bg);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 /* Containers */
 .container {
-  width: 90%;
+  width: 92%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -40,382 +65,254 @@ body {
 a {
   color: var(--primary-color);
   text-decoration: none;
-  transition: 0.3s ease;
+  transition: color 0.2s ease;
 }
-a:hover {
-  color: var(--accent-color);
-}
+a:hover { color: var(--accent-color); }
 
 /* Buttons */
 .btn {
   display: inline-block;
   background: var(--primary-color);
-  color: var(--light-color);
+  color: var(--white);
   padding: 10px 18px;
   border-radius: 8px;
-  transition: 0.3s ease;
-  font-weight: 500;
+  transition: background 0.2s ease, transform 0.15s ease;
+  font-weight: 600;
 }
-.btn:hover {
-  background: var(--accent-color);
-}
+.btn:hover { background: var(--accent-color); transform: translateY(-2px); }
 
 /* ----------------------------------------
-   3. Header & Navbar
+   3. Utility / small helpers
 ---------------------------------------- */
-
-/* Sub-header (blue top bar) */
-.header-top {
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  font-size: 13px;
-  padding: 8px 0;
-  position: relative; /* scrolls away naturally */
-}
-
-.header-top .info,
-.header-top .social-links {
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-.header-top li {
-  margin-right: 20px;
-}
-
-.header-top img {
-  vertical-align: middle;
-}
-
-/* Main navbar */
-#primary-header {
-position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to bottom, var(--light-color) 0%, #e6f3ff 100%);
-  transition: background 0.6s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
-}
-
-#primary-header.scrolled {
-  background: linear-gradient(to bottom, #ffffff 0%, #cce5ff 100%);
-}
-
-/* Navbar layout */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 0;
-  flex-wrap: nowrap;
-}
-
-/* Left nav links */
-.navbar-nav {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  order: 1;
-  flex: 1;
-  justify-content: flex-end;
-}
-
-.navbar-nav li {
-  margin-right: 25px;
-}
-
-.navbar-nav a {
-  color: var(--dark-color);
-  font-weight: 500;
-  text-transform: uppercase;
-  transition: 0.3s;
-}
-
-.navbar-nav a:hover,
-.navbar-nav a.active {
-  color: var(--primary-color);
-}
-
-/* Logo aligned to the left */
-.navbar-brand {
-  order: 2;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.navbar-brand img.logo {
-  height: 100px;
-  width: auto;
-  max-height: 100px;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-}
-
-.navbar-brand img.logo:hover {
-  transform: scale(1.05);
-}
-
-/* Hide toggle for desktop */
-.navbar-toggler {
-  display: none;
-}
-
-/* Smooth fade background on scroll */
-body {
-  scroll-behavior: smooth;
-}
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.text-muted { color: var(--muted); }
+.list-unstyled { list-style: none; padding: 0; margin: 0; }
 
 /* ----------------------------------------
-   Sub-header (Gray, not fixed)
----------------------------------------- */
-.sub-header {
-  background-color: #e5e7eb; /* gray tone */
-  color: var(--dark-color);
-  font-size: 13px;
-  padding: 6px 0;
-  width: 100%;
-}
-
-.sub-header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.sub-header .left-info span {
-  margin-right: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.sub-header i {
-  color: var(--primary-color);
-}
-
-.sub-header .right-link a {
-  color: var(--primary-color);
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.sub-header .right-link a:hover {
-  color: var(--accent-color);
-}
-
-/* ----------------------------------------
-   Primary Header (Fixed Navbar)
+   4. Primary Header (fixed)
+   - Primary header stays fixed at top
 ---------------------------------------- */
 #primary-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to bottom, var(--light-color) 0%, #e6f3ff 100%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  background: linear-gradient(to bottom, var(--white) 0%, #e6f6ff 100%);
+  box-shadow: 0 6px 18px rgba(11, 36, 64, 0.06);
+  z-index: 1100;
+  transition: background 0.3s ease;
 }
 
-.navbar {
+#primary-header.scrolled {
+  background: linear-gradient(to bottom, var(--white) 0%, #d9eeff 100%);
+}
+
+/* layout inside primary header */
+#primary-header .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 18px;
   padding: 12px 0;
-  flex-wrap: nowrap;
 }
 
-.navbar-nav li {
-  margin-right: 25px;
+/* Logo on left */
+.navbar-brand {
+  order: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
+.logo {
+  height: 64px; /* slightly smaller for cleaner header */
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+.logo:hover { transform: scale(1.03); }
+
+/* navigation on the right */
+.navbar-nav {
+  order: 2;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbar-nav .nav-item { margin: 0; }
 .navbar-nav a {
   color: var(--dark-color);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  transition: 0.3s;
+  font-size: 0.95rem;
+  letter-spacing: 0.6px;
 }
+.navbar-nav a.active,
+.navbar-nav a:hover { color: var(--primary-color); }
 
-.navbar-nav a:hover,
-.navbar-nav a.active {
-  color: var(--primary-color);
-}
+/* navbar toggler visibility on small screens */
+.navbar-toggler { background: transparent; border: 0; font-size: 1.1rem; color: var(--dark-color); }
 
-.navbar-brand .logo {
-  height: 70px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.navbar-brand .logo:hover {
-  transform: scale(1.05);
-}
-
-/* Fix hero overlap due to fixed navbar */
+/* reserve space so hero doesn't hide under fixed header + sub-header height */
 .hero {
-  margin-top: 130px; /* Adjust depending on logo size */
+  margin-top: calc(64px + 44px + 20px); /* logo + sub-header + spacing — tweak if needed */
 }
 
 /* ----------------------------------------
-   4. Hero Section
+   5. Sub-header (placed below primary, NOT fixed)
+   - dark blue (not navy), light-blue icons
 ---------------------------------------- */
-.hero {
-  background: linear-gradient(135deg, #cbe7ff 0%, #e7f4ff 100%);
-  text-align: center;
-  padding: 100px 20px;
+.sub-header {
+  background-color: var(--subheader-blue);
+  color: var(--white);
+  font-size: 13px;
+  width: 100%;
+  padding: 8px 0;
+  position: relative; /* natural flow below primary header */
+  box-shadow: 0 2px 6px rgba(11, 36, 64, 0.06);
 }
 
+.sub-header .sub-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.sub-header .left-info span,
+.sub-header .right-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* icons in sub-header (light blue) */
+.sub-icon {
+  color: var(--accent-color);
+  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* small text next to icon */
+.sub-text { font-size: 13px; color: var(--white); }
+
+/* Github on right */
+.github-link {
+  gap: 8px;
+  color: var(--white);
+  font-weight: 600;
+  align-items: center;
+}
+.github-link:hover { color: var(--accent-color); }
+
+/* ----------------------------------------
+   6. Hero Section
+---------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, #dff2ff 0%, #eef8ff 100%);
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+}
 .hero h2 {
+  font-family: var(--heading-font);
   font-size: 2rem;
   color: var(--dark-color);
   margin-bottom: 10px;
 }
-
-.hero p {
-  color: var(--text-gray);
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-}
+.hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; }
 
 /* ----------------------------------------
-   5. Sections
+   7. Sections & Typography
 ---------------------------------------- */
-section {
-  padding: 60px 0;
-}
-
+section { padding: 60px 0; }
 section h2 {
-  font-size: 1.8rem;
+  font-family: var(--heading-font);
+  font-size: 1.6rem;
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 
 /* ----------------------------------------
-   6. Card Grid Layout
+   8. Card Grid / Cards
 ---------------------------------------- */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  gap: 22px;
 }
-
 .card {
-  background: var(--light-color);
+  background: var(--white);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(15, 23, 36, 0.04);
   text-align: center;
 }
-
-.card h3 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: var(--text-gray);
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
+.card h3 { color: var(--primary-color); margin-bottom: 10px; }
+.card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
 
 /* ----------------------------------------
-   7. Search & Filters
+   9. Search / Filters / Forms
 ---------------------------------------- */
 #resources input[type="text"],
 #resources select {
   width: 100%;
   padding: 10px 15px;
   margin-bottom: 20px;
-  border: 1px solid #d1e3ff;
+  border: 1px solid #d7ecff;
   border-radius: 8px;
   font-size: 1rem;
 }
-
-#resources input:focus,
-#resources select:focus {
+#resources input:focus, #resources select:focus {
   border-color: var(--primary-color);
   outline: none;
 }
 
-/* ----------------------------------------
-   8. Form Styling
----------------------------------------- */
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+/* forms */
+form { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; }
+form label { margin-top: 12px; margin-bottom: 6px; font-weight: 600; }
+form input, form textarea, form select {
+  padding: 10px; border: 1px solid #cfe7ff; border-radius: 8px; font-size: 1rem;
 }
-
-form label {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-form input,
-form textarea,
-form select {
-  padding: 10px;
-  border: 1px solid #cce0ff;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
+form textarea { min-height: 110px; resize: vertical; }
 
 /* ----------------------------------------
-   9. Footer
+   10. Footer
 ---------------------------------------- */
 footer {
   background-color: var(--primary-color);
-  color: var(--light-color);
+  color: var(--white);
   text-align: center;
-  padding: 15px 0;
-  font-size: 0.9rem;
+  padding: 18px 0;
+  font-size: 0.95rem;
 }
 
 /* ----------------------------------------
-   10. Responsive Design
+   11. Responsive
 ---------------------------------------- */
+@media (max-width: 992px) {
+  /* shrink logo on tablet */
+  .logo { height: 56px; }
+  .hero { padding: 70px 16px; }
+  .hero h2 { font-size: 1.6rem; }
+  .sub-header .sub-text { font-size: 12px; }
+}
+
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .navbar-nav {
-    order: 2;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-  }
-
-  .navbar-nav li {
-    margin: 10px 0;
-  }
-
-  .navbar-brand {
-    order: 1;
-    margin-bottom: 10px;
-  }
-
-  .hero {
-    padding: 80px 20px;
-  }
+  /* stack sub-header items */
+  .sub-header .sub-header-content { flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 0; }
+  .navbar-nav { display: none; } /* use offcanvas for small screen nav */
+  .navbar-toggler { display: inline-flex; }
+  .logo { height: 48px; }
+  .hero { margin-top: calc(48px + 44px + 20px); padding: 42px 12px; }
 }
