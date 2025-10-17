@@ -6,12 +6,56 @@
   font-family: "Poppins", sans-serif;
 }
 
+#primary-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above other elements */
+  background: white; /* Ensure it has a background to avoid transparency */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+}
+
 body {
+  padding-top: 102px;
   background: #f8f9fb;
   color: #333;
   line-height: 1.6;
   margin: 0;
   padding-top: 80px;
+}
+
+a.nav-link {
+  text-transform: uppercase;
+  color: var(--light-black-color);
+}
+
+a.nav-link:focus {
+  color: var(--light-black-color);
+}
+
+a.nav-link.active,
+a.nav-link:hover {
+  color: var(--primary-color) !important;
+  outline: none;
+}
+
+#primary-header .dropdown .search::after {
+  content: none;
+}
+
+#primary-header .search-dropdown .dropdown-menu {
+  width: 260px;
+}
+
+#primary-header .search-dropdown .dropdown-menu input {
+  min-width: 100%;
+}
+
+#primary-header .search-dropdown .dropdown-menu button {
+  padding: 0 12px;
+  min-height: -webkit-fill-available;
+  border-radius: 0.25rem;
 }
 
 header {
