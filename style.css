@@ -1,296 +1,280 @@
-/*--------------------------------------------------------------
-/** 1. VARIABLES
---------------------------------------------------------------*/
+/* ----------------------------------------
+   1. Root Variables – Colors, Fonts
+---------------------------------------- */
 :root {
-  --primary-color: #6bc831;
-  --black-color: #1A2A36;
-  --light-black-color: #4E4C49;
-  --dark-color: #9B9B9B;
-  --primary-color-200: #E8F0F1;
-  --primary-color-400: #c4e9ed;
-  --gray-color: #777F81;
-  --bs-body-bg: #F9F4EC;
-  --bs-dark-rgb: 80, 80, 80;
-  --bs-gray-100: #EAE5DD;
-  --bs-gray-300: #DCDCDC;
-  --bs-primary-text-emphasis: var(--primary-color);
-  --bs-light-rgb: rgba(255, 255, 255, 1);
-  --bs-primary-rgb: 253, 140, 78;
-  --light-color: #fdfdfd;
-  --swiper-theme-color: #111 !important;
-  --cadet-blue-color: #9AB4B7;
+  --primary-color: #2a8ef7;
+  --secondary-color: #f1f8ff;
+  --dark-color: #1e293b;
+  --light-color: #ffffff;
+  --text-gray: #6b7280;
+  --accent-color: #82cfff;
+
+  --heading-font: "Poppins", sans-serif;
+  --body-font: "Inter", sans-serif;
 }
 
-/* Fonts */
-:root {
-  --heading-font: "Syne", sans-serif;
-  --body-font: "Poppins", sans-serif;
-}
-
-/*--------------------------------------------------------------
-/* 2. Header
---------------------------------------------------------------*/
-
-#primary-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* Ensures it stays above other elements */
-  background: white; /* Ensure it has a background to avoid transparency */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
-}
-
-body {
-  padding-top: 102px; /* Adjust based on navbar height */
-}
-
-a.nav-link {
-  text-transform: uppercase;
-  color: var(--light-black-color);
-}
-
-a.nav-link:focus {
-  color: var(--light-black-color);
-}
-
-a.nav-link.active,
-a.nav-link:hover {
-  color: var(--primary-color) !important;
-  outline: none;
-}
-
-#primary-header .dropdown .search::after {
-  content: none;
-}
-
-#primary-header .search-dropdown .dropdown-menu {
-  width: 260px;
-}
-
-#primary-header .search-dropdown .dropdown-menu input {
-  min-width: 100%;
-}
-
-#primary-header .search-dropdown .dropdown-menu button {
-  padding: 0 12px;
-  min-height: -webkit-fill-available;
-  border-radius: 0.25rem;
-}
-
-/* Svg Color */
-svg.light-color {
-  color: var(--light-color);
-}
-
-svg.dark-color {
-  color: var(--dark-color);
-}
-
-svg.primary-color {
-  color: var(--primary-color);
-}
-
-svg.primary-color {
-  color: var(--primary-color);
-}
-
-svg.primary-color-500 {
-  color: var(--bs-primary-rgb);
-}
-
-/* Text Box Styling */
-.text-box {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.text-box h2 {
-  color: #006400;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.text-box p {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-/* Image Box Styling */
-.image-box {
-  flex: 1;
-  text-align: right;
-}
-
-.image-box img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Additional Info Boxes */
-.info-boxes {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-}
-
-.info-box {
-  flex: 1;
-  background-color: #dfe8df;
-  color: #dfe8df;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 0 10px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.logo1 {
-  width: 120px; /* Adjust size */
-  height: auto;
-}
-
-.info-box h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.info-box p {
-  font-size: 1.1rem;
-}
-
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-/* Box Styling */
-.overview-box, .planet-impact-box, .commitment-box {
-  background-color: #fafafa;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-h2, h3 {
-  color: #2e8b57; /* Green */
-  margin-bottom: 15px;
-}
-
-p {
-  line-height: 1.6;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-/* Image Styling */
-.about-image {
-  width: 30%;
-  border-radius: 8px;
-  margin-top: 20px;
-  max-width: 600px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/*--------------------------------------------------------------
-/* 3 General Styles
---------------------------------------------------------------*/
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-html {
+/* ----------------------------------------
+   2. Global Reset
+---------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: var(--body-font);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 164%;
-  letter-spacing: 0.32px;
   color: var(--dark-color);
-  margin: 0;
+  background-color: var(--secondary-color);
+  line-height: 1.6;
 }
 
-p {
-  color: var(--dark-color);
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Links */
 a {
-  color: inherit;
+  color: var(--primary-color);
   text-decoration: none;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease;
+}
+a:hover {
+  color: var(--accent-color);
 }
 
-a:hover {
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--light-color);
+  padding: 10px 18px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+.btn:hover {
+  background: var(--accent-color);
+}
+
+/* ----------------------------------------
+   3. Header & Navbar
+---------------------------------------- */
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.header-top .info,
+.header-top .social-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.header-top li {
+  margin-right: 20px;
+}
+
+.header-top img {
+  vertical-align: middle;
+}
+
+#primary-header {
+  background-color: var(--light-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.navbar-brand img.logo {
+  height: 50px;
+  width: auto;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+}
+
+.navbar-nav li {
+  margin-left: 25px;
+}
+
+.navbar-nav a {
+  color: var(--dark-color);
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active {
   color: var(--primary-color);
 }
 
-.text-light {
-  color: var(--light-color) !important;
+.navbar-toggler {
+  display: none;
 }
 
-.text-primary {
-  color: var(--primary-color) !important;
-}
-
-.text-black {
-  color: var(--black-color) !important;
-}
-
-/*--------------------------------------------------------------
-/* 4. Background Color
---------------------------------------------------------------*/
-.bg-light {
-  background-color: var(--light-color) !important;
-}
-
-.bg-primary {
-  background-color: var(--primary-color) !important;
-}
-
-.bg-gray {
-  background-color: var(--bs-gray-100) !important;
-}
-
-.bg-accent-gradient {
-  background: linear-gradient(90deg, #18A7E4 0%, #1BADEC 0.01%, #0A9CDB 100%);
-}
-
-.bg-primary-200 {
-  background-color: var(--primary-color-200) !important;
-}
-
-.bg-primary-dim {
-  background-color: var(--bs-primary-rgb) !important;
-}
-
-#resources h2 {
-  background: linear-gradient(90deg, #0b480b, #0b802b);
-  color: white;
-  padding: 15px;
-  border-radius: 10px;
-  display: inline-block;
+/* ----------------------------------------
+   4. Hero Section
+---------------------------------------- */
+.hero {
+  background: linear-gradient(135deg, #cbe7ff 0%, #e7f4ff 100%);
   text-align: center;
-  width: 100%;
-  font-size: 2rem;
+  padding: 100px 20px;
 }
 
-.header-box {
-  background: rgba(11, 72, 11, 0.9);
-  padding: 15px 30px;
+.hero h2 {
+  font-size: 2rem;
+  color: var(--dark-color);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+/* ----------------------------------------
+   5. Sections
+---------------------------------------- */
+section {
+  padding: 60px 0;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+/* ----------------------------------------
+   6. Card Grid Layout
+---------------------------------------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--light-color);
+  padding: 20px;
   border-radius: 10px;
-  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.card h3 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* ----------------------------------------
+   7. Search & Filters
+---------------------------------------- */
+#resources input[type="text"],
+#resources select {
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #d1e3ff;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#resources input:focus,
+#resources select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* ----------------------------------------
+   8. Form Styling
+---------------------------------------- */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+form input,
+form textarea,
+form select {
+  padding: 10px;
+  border: 1px solid #cce0ff;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ----------------------------------------
+   9. Footer
+---------------------------------------- */
+footer {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------------------
+   10. Responsive Design
+---------------------------------------- */
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
+  .navbar-toggler {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    padding: 80px 20px;
+  }
 }
