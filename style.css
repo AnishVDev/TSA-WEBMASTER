@@ -109,7 +109,11 @@ a:hover { color: var(--accent-color); }
 
 /* layout inside primary header */
 #primary-header .container {
-  display: flex; align-items: center; gap: 18px; padding: 10px 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 10px 0;
+}
+
+.navbar-brand {
+  margin-right: auto !important;
 }
 
 /* Logo on left */
