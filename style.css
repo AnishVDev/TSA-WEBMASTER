@@ -176,6 +176,98 @@ body {
 }
 
 /* ----------------------------------------
+   Sub-header (Gray, not fixed)
+---------------------------------------- */
+.sub-header {
+  background-color: #e5e7eb; /* gray tone */
+  color: var(--dark-color);
+  font-size: 13px;
+  padding: 6px 0;
+  width: 100%;
+}
+
+.sub-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.sub-header .left-info span {
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sub-header i {
+  color: var(--primary-color);
+}
+
+.sub-header .right-link a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sub-header .right-link a:hover {
+  color: var(--accent-color);
+}
+
+/* ----------------------------------------
+   Primary Header (Fixed Navbar)
+---------------------------------------- */
+#primary-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--light-color) 0%, #e6f3ff 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: nowrap;
+}
+
+.navbar-nav li {
+  margin-right: 25px;
+}
+
+.navbar-nav a {
+  color: var(--dark-color);
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.navbar-nav a:hover,
+.navbar-nav a.active {
+  color: var(--primary-color);
+}
+
+.navbar-brand .logo {
+  height: 70px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand .logo:hover {
+  transform: scale(1.05);
+}
+
+/* Fix hero overlap due to fixed navbar */
+.hero {
+  margin-top: 130px; /* Adjust depending on logo size */
+}
+
+/* ----------------------------------------
    4. Hero Section
 ---------------------------------------- */
 .hero {
