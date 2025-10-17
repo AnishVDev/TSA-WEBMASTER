@@ -1,55 +1,101 @@
-#CSS Styling File
 * {
   box-sizing: border-box;
-  font-family: "Helvetica Neue";
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: #f8f9fa;
+  background: #f8f9fb;
   color: #333;
   line-height: 1.6;
 }
 
 header {
-  background: #004aad;
-  color: white;
-  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
 }
 
-header h1 {
-  font-size: 1.5rem;
+header.scrolled {
+  background: rgba(0, 74, 173, 0.95);
+  color: white;
+}
+
+header .logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #004aad;
+  transition: color 0.3s ease;
+}
+
+header.scrolled .logo {
+  color: white;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
-nav a {
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+header.scrolled .nav-link {
+  color: white;
+}
+
+header.scrolled .nav-link:hover {
+  color: #ffda79;
+}
+
+.signup-btn {
+  background: #007bff;
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.signup-btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
 }
 
 .hero {
   background: linear-gradient(to right, #004aad, #007bff);
   color: white;
   text-align: center;
-  padding: 5rem 2rem;
+  padding: 7rem 2rem;
+  margin-top: 4rem;
 }
 
 .hero h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 }
 
@@ -58,24 +104,28 @@ nav a:hover {
   background: #007bff;
   color: white;
   padding: 0.7rem 1.2rem;
-  border-radius: 5px;
+  border-radius: 6px;
   text-decoration: none;
   margin-top: 1rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
   background: #0056b3;
+  transform: translateY(-2px);
 }
 
 .container {
-  padding: 3rem 2rem;
-  max-width: 1000px;
+  padding: 4rem 2rem;
+  max-width: 1100px;
   margin: auto;
 }
 
 h2 {
   margin-bottom: 1.5rem;
   color: #004aad;
+  font-weight: 600;
 }
 
 .card-grid {
@@ -88,7 +138,13 @@ h2 {
   background: white;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -96,12 +152,14 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+/* FORMS */
 input, textarea, select {
   width: 100%;
   margin-bottom: 1rem;
-  padding: 0.6rem;
+  padding: 0.7rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 0.95rem;
 }
 
 footer {
@@ -110,4 +168,5 @@ footer {
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
+  font-size: 0.9rem;
 }
