@@ -19,31 +19,26 @@
    1. Root Variables – Colors, Fonts
 ---------------------------------------- */
 :root {
-  --primary-color: #2a8ef7;     /* main bright blue */
-  --accent-color: #82cfff;      /* light blue for icons */
-  --subheader-blue: #0f5ea8;    /* darker but not navy; change if needed */
-  --dark-color: #0f1724;
+  --primary-color: #1357a6;     /* stronger, deeper blue */
+  --accent-color: #2ea3ff;      /* bright accent for hover */
+  --subheader-blue: #0b3558;    /* darker, professional subheader */
+  --dark-color: #0b1320;
   --muted: #6b7280;
-  --bg: #f6fbff;
+  --bg: #f3f7fb;
   --white: #ffffff;
 
   --heading-font: "Poppins", sans-serif;
   --body-font: "Poppins", sans-serif;
+
+  --header-height: 64px;   /* keep consistent with markup */
+  --subheader-height: 44px;
 }
 
 /* ----------------------------------------
    2. Global Reset & Base
 ---------------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
 body {
   font-family: var(--body-font);
   color: var(--dark-color);
@@ -52,117 +47,87 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+
+  /* push document down so fixed primary header doesn't overlap sub-header */
+  padding-top: calc(var(--header-height) + var(--subheader-height));
 }
 
 /* Containers */
-.container {
-  width: 92%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+.container { width: 92%; max-width: 1200px; margin: 0 auto; }
 
 /* Links */
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+a { color: var(--primary-color); text-decoration: none; transition: color 0.15s ease; }
 a:hover { color: var(--accent-color); }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  background: var(--primary-color);
+  background: linear-gradient(180deg, var(--primary-color), #0f4d87);
   color: var(--white);
   padding: 10px 18px;
-  border-radius: 8px;
-  transition: background 0.2s ease, transform 0.15s ease;
-  font-weight: 600;
+  border-radius: 10px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(13, 32, 64, 0.12);
+  border: none;
 }
-.btn:hover { background: var(--accent-color); transform: translateY(-2px); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(13, 32, 64, 0.14); }
+
+/* Outline button */
+.btn.btn-outline {
+  background: transparent;
+  color: var(--dark-color);
+  border: 1px solid rgba(11, 23, 40, 0.08);
+  box-shadow: none;
+}
 
 /* ----------------------------------------
    3. Utility / small helpers
 ---------------------------------------- */
-.d-flex { display: flex; }
-.align-items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.text-muted { color: var(--muted); }
+.d-flex { display: flex; } .align-items-center { align-items: center; }
+.justify-between { justify-content: space-between; } .text-muted { color: var(--muted); }
 .list-unstyled { list-style: none; padding: 0; margin: 0; }
 
 /* ----------------------------------------
    4. Primary Header (fixed)
-   - Primary header stays fixed at top
 ---------------------------------------- */
 #primary-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to bottom, var(--white) 0%, #e6f6ff 100%);
+  height: var(--header-height);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(241,248,255,0.95));
   box-shadow: 0 6px 18px rgba(11, 36, 64, 0.06);
   z-index: 1100;
-  transition: background 0.3s ease;
+  transition: background 0.25s ease, box-shadow 0.2s ease;
 }
-
 #primary-header.scrolled {
-  background: linear-gradient(to bottom, var(--white) 0%, #d9eeff 100%);
+  background: linear-gradient(180deg, #fff, #e9f5ff);
+  box-shadow: 0 8px 26px rgba(11, 36, 64, 0.09);
 }
 
 /* layout inside primary header */
 #primary-header .container {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 12px 0;
+  display: flex; align-items: center; gap: 18px; padding: 10px 0;
 }
 
 /* Logo on left */
-.navbar-brand {
-  order: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.navbar-brand { order: 1; display: flex; align-items: center; gap: 12px; }
+.logo { height: 56px; width: auto; display: block; transition: transform 0.18s ease; }
+.logo:hover { transform: scale(1.02); }
 
-.logo {
-  height: 64px; /* slightly smaller for cleaner header */
-  width: auto;
-  display: block;
-  transition: transform 0.2s ease;
-}
-.logo:hover { transform: scale(1.03); }
-
-/* navigation on the right */
-.navbar-nav {
-  order: 2;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.navbar-nav .nav-item { margin: 0; }
-.navbar-nav a {
-  color: var(--dark-color);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  letter-spacing: 0.6px;
-}
-.navbar-nav a.active,
-.navbar-nav a:hover { color: var(--primary-color); }
+/* navigation */
+.navbar-nav { order: 2; margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.navbar-nav a { color: var(--dark-color); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.6px; }
+.navbar-nav a.active, .navbar-nav a:hover { color: var(--primary-color); }
 
 /* navbar toggler visibility on small screens */
 .navbar-toggler { background: transparent; border: 0; font-size: 1.1rem; color: var(--dark-color); }
 
-/* reserve space so hero doesn't hide under fixed header + sub-header height */
-.hero {
-  margin-top: calc(64px + 44px + 20px); /* logo + sub-header + spacing — tweak if needed */
-}
-
 /* ----------------------------------------
    5. Sub-header (placed below primary, NOT fixed)
-   - dark blue (not navy), light-blue icons
+   - darker, professional scheme
 ---------------------------------------- */
 .sub-header {
   background-color: var(--subheader-blue);
@@ -170,8 +135,9 @@ a:hover { color: var(--accent-color); }
   font-size: 13px;
   width: 100%;
   padding: 8px 0;
-  position: relative; /* natural flow below primary header */
+  position: relative; /* keeps it in flow under the fixed header since body has padding-top */
   box-shadow: 0 2px 6px rgba(11, 36, 64, 0.06);
+  z-index: 1050;
 }
 
 .sub-header .sub-header-content {
@@ -189,58 +155,79 @@ a:hover { color: var(--accent-color); }
   gap: 8px;
   color: var(--white);
   font-weight: 500;
+  opacity: 0.95;
 }
 
-/* icons in sub-header (light blue) */
-.sub-icon {
-  color: var(--accent-color);
-  font-size: 14px;
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-  text-align: center;
-}
+/* icons in sub-header (slightly brighter) */
+.sub-icon { color: var(--accent-color); font-size: 14px; width: 18px; height: 18px; text-align: center; }
 
 /* small text next to icon */
 .sub-text { font-size: 13px; color: var(--white); }
 
 /* Github on right */
-.github-link {
-  gap: 8px;
-  color: var(--white);
-  font-weight: 600;
-  align-items: center;
-}
+.github-link { gap: 8px; color: var(--white); font-weight: 600; align-items: center; }
 .github-link:hover { color: var(--accent-color); }
 
 /* ----------------------------------------
    6. Hero Section
+   - stronger contrast box so text is readable
 ---------------------------------------- */
 .hero {
-  background: linear-gradient(135deg, #dff2ff 0%, #eef8ff 100%);
-  text-align: center;
-  padding: 100px 20px;
-  border-radius: 10px;
-  margin: 20px auto;
+  background: linear-gradient(135deg, #e9f4ff 0%, #f7fbff 100%);
+  padding: 36px 20px;
+  border-radius: 12px;
+  margin: 24px auto;
+  box-shadow: 0 12px 30px rgba(11, 36, 64, 0.06);
+}
+
+.hero-inner { display: grid; grid-template-columns: 1fr 360px; gap: 22px; align-items: start; }
+
+/* hero text panel (darker contrast than before) */
+.hero-text {
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,250,255,0.96));
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(11, 36, 64, 0.04);
+  border: 1px solid rgba(13, 32, 64, 0.04);
 }
 .hero h2 {
   font-family: var(--heading-font);
-  font-size: 2rem;
+  font-size: 1.9rem;
   color: var(--dark-color);
   margin-bottom: 10px;
 }
-.hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 18px; }
+.hero p { color: var(--muted); font-size: 1.02rem; margin-bottom: 18px; }
+
+/* hero CTA area */
+.hero-cta { display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; }
+
+/* right-side features */
+.hero-features {
+  display: grid;
+  gap: 12px;
+}
+.hero-features .feature {
+  background: linear-gradient(180deg,#ffffff,#f7fbff);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(11, 36, 64, 0.04);
+  text-align: left;
+  border: 1px solid rgba(13, 32, 64, 0.03);
+}
+.hero-features .feature i { font-size: 20px; color: var(--primary-color); margin-bottom:8px; }
+.hero-features .feature h4 { margin: 6px 0; font-size: 1rem; color: var(--dark-color); }
+.hero-features .feature p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
 /* ----------------------------------------
    7. Sections & Typography
 ---------------------------------------- */
-section { padding: 60px 0; }
+section { padding: 48px 0; }
 section h2 {
   font-family: var(--heading-font);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
 
 /* ----------------------------------------
@@ -249,40 +236,46 @@ section h2 {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  gap: 20px;
 }
 .card {
   background: var(--white);
-  padding: 20px;
+  padding: 18px;
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(15, 23, 36, 0.04);
+  box-shadow: 0 8px 20px rgba(15, 23, 36, 0.04);
   text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  border: 1px solid rgba(11, 23, 40, 0.03);
 }
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(11, 23, 40, 0.08); }
 .card h3 { color: var(--primary-color); margin-bottom: 10px; }
 .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
 
 /* ----------------------------------------
-   9. Search / Filters / Forms
+   9. Search / Filters / Forms (polished)
 ---------------------------------------- */
 #resources input[type="text"],
 #resources select {
   width: 100%;
-  padding: 10px 15px;
+  padding: 12px 14px;
   margin-bottom: 20px;
-  border: 1px solid #d7ecff;
-  border-radius: 8px;
+  border: 1px solid rgba(13, 32, 64, 0.06);
+  border-radius: 10px;
   font-size: 1rem;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  transition: box-shadow 0.12s ease, border-color 0.12s ease;
 }
 #resources input:focus, #resources select:focus {
-  border-color: var(--primary-color);
+  border-color: var(--accent-color);
   outline: none;
+  box-shadow: 0 8px 24px rgba(46,163,255,0.09);
 }
 
 /* forms */
 form { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; }
-form label { margin-top: 12px; margin-bottom: 6px; font-weight: 600; }
+form label { margin-top: 12px; margin-bottom: 6px; font-weight: 700; color: var(--dark-color); }
 form input, form textarea, form select {
-  padding: 10px; border: 1px solid #cfe7ff; border-radius: 8px; font-size: 1rem;
+  padding: 12px; border: 1px solid rgba(11,23,40,0.06); border-radius: 10px; font-size: 1rem; background: #fff;
 }
 form textarea { min-height: 110px; resize: vertical; }
 
@@ -290,7 +283,7 @@ form textarea { min-height: 110px; resize: vertical; }
    10. Footer
 ---------------------------------------- */
 footer {
-  background-color: var(--primary-color);
+  background: linear-gradient(180deg,var(--primary-color), #0f4d87);
   color: var(--white);
   text-align: center;
   padding: 18px 0;
@@ -301,18 +294,20 @@ footer {
    11. Responsive
 ---------------------------------------- */
 @media (max-width: 992px) {
-  /* shrink logo on tablet */
-  .logo { height: 56px; }
-  .hero { padding: 70px 16px; }
-  .hero h2 { font-size: 1.6rem; }
+  .logo { height: 52px; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-features { grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .hero { padding: 22px; margin: 18px auto; }
+  .hero h2 { font-size: 1.5rem; }
   .sub-header .sub-text { font-size: 12px; }
 }
 
 @media (max-width: 768px) {
-  /* stack sub-header items */
-  .sub-header .sub-header-content { flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px 0; }
   .navbar-nav { display: none; } /* use offcanvas for small screen nav */
   .navbar-toggler { display: inline-flex; }
   .logo { height: 48px; }
-  .hero { margin-top: calc(48px + 44px + 20px); padding: 42px 12px; }
+  .hero { margin-top: 12px; padding: 18px; border-radius: 10px; }
+  body { padding-top: calc(var(--header-height) + var(--subheader-height)); }
+  .hero-features { display: grid; grid-template-columns: 1fr; }
 }
+
