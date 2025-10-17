@@ -63,18 +63,14 @@ a:hover {
 /* ----------------------------------------
    3. Header & Navbar
 ---------------------------------------- */
-header {
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
 
+/* Sub-header (blue top bar) */
 .header-top {
   background-color: var(--primary-color);
   color: var(--light-color);
   font-size: 13px;
   padding: 8px 0;
+  position: relative; /* scrolls away naturally */
 }
 
 .header-top .info,
@@ -92,11 +88,13 @@ header {
   vertical-align: middle;
 }
 
+/* Main navbar */
 #primary-header {
   background-color: var(--light-color);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
+  z-index: 1000;
 }
 
 .navbar {
@@ -104,20 +102,20 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 15px 0;
+  flex-wrap: wrap;
 }
 
-.navbar-brand img.logo {
-  height: 50px;
-  width: auto;
-}
-
+/* Navigation links on the LEFT */
 .navbar-nav {
   display: flex;
+  align-items: center;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-nav li {
-  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .navbar-nav a {
@@ -132,6 +130,31 @@ header {
   color: var(--primary-color);
 }
 
+/* Large Logo on the RIGHT */
+.navbar-brand {
+  order: 2;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img.logo {
+  height: 70px;
+  width: auto;
+  max-height: 70px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Force order so links stay left, logo right */
+.navbar-nav {
+  order: 1;
+}
+
+/* Hide toggle for desktop */
 .navbar-toggler {
   display: none;
 }
@@ -263,15 +286,25 @@ footer {
    10. Responsive Design
 ---------------------------------------- */
 @media (max-width: 768px) {
-  .navbar-nav {
-    display: none;
+  .navbar {
+    flex-direction: column;
+    align-items: center;
   }
-  .navbar-toggler {
-    display: block;
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 1.5rem;
+
+  .navbar-nav {
+    order: 2;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .navbar-nav li {
+    margin: 10px 0;
+  }
+
+  .navbar-brand {
+    order: 1;
+    margin-bottom: 10px;
   }
 
   .hero {
