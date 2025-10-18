@@ -1,24 +1,5 @@
-/* ========================================================
-   Community Resource Hub - style.css
-   Cleaned & organized by ChatGPT
-   Table of Contents:
-   1. Root variables
-   2. Global reset & base
-   3. Utility / containers / links / buttons
-   4. Primary header (fixed)
-   5. Sub-header (under primary, not fixed)
-   6. Hero
-   7. Sections & typography
-   8. Cards / grids
-   9. Forms / search / filters
-   10. Footer
-   11. Responsive
-   ======================================================== */
-
-/* ----------------------------------------
-   1. Root Variables – Colors, Fonts
----------------------------------------- */
-:root {
+/* root vars + small notes */
+:root{
   --primary-color: #1357a6;     /* stronger, deeper blue */
   --accent-color: #2ea3ff;      /* bright accent for hover */
   --subheader-blue: #0b3558;    /* darker, professional subheader */
@@ -34,11 +15,11 @@
   --subheader-height: 44px;
 }
 
-/* ----------------------------------------
-   2. Global Reset & Base
----------------------------------------- */
+/* reset / base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; }
+
+/* body */
 body {
   font-family: var(--body-font);
   color: var(--dark-color);
@@ -55,11 +36,12 @@ body {
 /* Containers */
 .container { width: 92%; max-width: 1200px; margin: 0 auto; }
 
+
 /* Links */
 a { color: var(--primary-color); text-decoration: none; transition: color 0.15s ease; }
 a:hover { color: var(--accent-color); }
 
-/* Buttons */
+/* Buttons - primary */
 .btn {
   display: inline-block;
   background: linear-gradient(180deg, var(--primary-color), #0f4d87);
@@ -81,16 +63,12 @@ a:hover { color: var(--accent-color); }
   box-shadow: none;
 }
 
-/* ----------------------------------------
-   3. Utility / small helpers
----------------------------------------- */
+/* small helpers - compact */
 .d-flex { display: flex; } .align-items-center { align-items: center; }
 .justify-between { justify-content: space-between; } .text-muted { color: var(--muted); }
 .list-unstyled { list-style: none; padding: 0; margin: 0; }
 
-/* ----------------------------------------
-   4. Primary Header (fixed)
----------------------------------------- */
+/* Primary header - fixed */
 #primary-header {
   position: fixed;
   top: 0;
@@ -112,6 +90,7 @@ a:hover { color: var(--accent-color); }
   display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 10px 0;
 }
 
+/* navbar-brand */
 .navbar-brand {
   margin-right: auto !important;
 }
@@ -129,6 +108,8 @@ a:hover { color: var(--accent-color); }
 /* navbar toggler visibility on small screens */
 .navbar-toggler { background: transparent; border: 0; font-size: 1.1rem; color: var(--dark-color); }
 
+
+/* navbar title */
 .navbar-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
@@ -139,20 +120,19 @@ a:hover { color: var(--accent-color); }
   white-space: nowrap;
 }
 
+/* container rule */
 #primary-header .container {
   display: flex;
   align-items: center;
 }
 
+/* logo sizing */
 .logo {
   height: 45px;
   width: auto;
 }
 
-/* ----------------------------------------
-   5. Sub-header (placed below primary, NOT fixed)
-   - darker, professional scheme
----------------------------------------- */
+/* Sub-header placed below primary, not fixed */
 .sub-header {
   background-color: var(--subheader-blue);
   color: var(--white);
@@ -182,20 +162,17 @@ a:hover { color: var(--accent-color); }
   opacity: 0.95;
 }
 
-/* icons in sub-header (slightly brighter) */
+/* icons in sub-header */
 .sub-icon { color: var(--accent-color); font-size: 14px; width: 18px; height: 18px; text-align: center; }
 
 /* small text next to icon */
 .sub-text { font-size: 13px; color: var(--white); }
 
-/* Github on right */
+/* Github link styling */
 .github-link { gap: 8px; color: var(--white); font-weight: 600; align-items: center; }
 .github-link:hover { color: var(--accent-color); }
 
-/* ----------------------------------------
-   6. Hero Section
-   - stronger contrast box so text is readable
----------------------------------------- */
+/* Hero Section */
 .hero {
   background: linear-gradient(135deg, #e9f4ff 0%, #f7fbff 100%);
   padding: 36px 20px;
@@ -206,7 +183,7 @@ a:hover { color: var(--accent-color); }
 
 .hero-inner { display: grid; grid-template-columns: 1fr 360px; gap: 22px; align-items: start; }
 
-/* hero text panel (darker contrast than before) */
+/* hero text panel */
 .hero-text {
   background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,250,255,0.96));
   padding: 28px;
@@ -242,9 +219,7 @@ a:hover { color: var(--accent-color); }
 .hero-features .feature h4 { margin: 6px 0; font-size: 1rem; color: var(--dark-color); }
 .hero-features .feature p { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
-/* ----------------------------------------
-   7. Sections & Typography
----------------------------------------- */
+/* sections & typography */
 section { padding: 48px 0; }
 section h2 {
   font-family: var(--heading-font);
@@ -254,9 +229,7 @@ section h2 {
   margin-bottom: 22px;
 }
 
-/* ----------------------------------------
-   8. Card Grid / Cards
----------------------------------------- */
+/* Card Grid / Cards */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -275,9 +248,7 @@ section h2 {
 .card h3 { color: var(--primary-color); margin-bottom: 10px; }
 .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
 
-/* ----------------------------------------
-   9. Search / Filters / Forms (polished)
----------------------------------------- */
+/* Search / Filters / Forms (polished) */
 #resources input[type="text"],
 #resources select {
   width: 100%;
@@ -303,9 +274,7 @@ form input, form textarea, form select {
 }
 form textarea { min-height: 110px; resize: vertical; }
 
-/* ----------------------------------------
-   10. Footer
----------------------------------------- */
+/* footer */
 footer {
   background: linear-gradient(180deg,var(--primary-color), #0f4d87);
   color: var(--white);
@@ -314,9 +283,7 @@ footer {
   font-size: 0.95rem;
 }
 
-/* ----------------------------------------
-   11. Responsive
----------------------------------------- */
+/* Responsive rules */
 @media (max-width: 992px) {
   .logo { height: 52px; }
   .hero-inner { grid-template-columns: 1fr; }
@@ -326,6 +293,7 @@ footer {
   .sub-header .sub-text { font-size: 12px; }
 }
 
+/* small-screen tweaks */
 @media (max-width: 768px) {
   .navbar-nav { display: none; } /* use offcanvas for small screen nav */
   .navbar-toggler { display: inline-flex; }
@@ -335,3 +303,25 @@ footer {
   .hero-features { display: grid; grid-template-columns: 1fr; }
 }
 
+/* small spacing helper */
+.mt-6 { margin-top: 6px; }
+
+/* accessibility helpers */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#resources input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.card { text-align: left; }
