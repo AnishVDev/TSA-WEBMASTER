@@ -1,8 +1,8 @@
-/* root vars + small notes */
+/* root vars */
 :root{
-  --primary-color: #1357a6;     /* stronger, deeper blue */
+  --primary-color: #1357a6;     /* dark blue */
   --accent-color: #2ea3ff;      /* bright accent for hover */
-  --subheader-blue: #0b3558;    /* darker, professional subheader */
+  --subheader-blue: #0b3558;    /* professional subheader */
   --dark-color: #0b1320;
   --muted: #6b7280;
   --bg: #f3f7fb;
